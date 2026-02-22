@@ -1,0 +1,10 @@
+2026-02-22 14:24:51,362 [INFO] Loading data...
+2026-02-22 14:24:51,396 [INFO] Feature engineering started...
+2026-02-22 14:24:51,407 [INFO] Starting 5-fold Stratified K-fold training...
+2026-02-22 14:24:52,238 [INFO] Fold 1 AUC: 0.93049
+2026-02-22 14:24:53,088 [INFO] Fold 2 AUC: 0.92982
+2026-02-22 14:24:53,908 [INFO] Fold 3 AUC: 0.92306
+2026-02-22 14:24:54,765 [INFO] Fold 4 AUC: 0.92807
+2026-02-22 14:24:55,596 [INFO] Fold 5 AUC: 0.92491
+2026-02-22 14:24:55,601 [INFO] --- Final OOF AUC Score: 0.92704 ---
+2026-02-22 14:24:55,625 [INFO] Submission file saved as 'submission_master.csv'
