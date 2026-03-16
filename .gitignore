@@ -1,1 +1,10 @@
 *.csv
+# Terraformの実行バイナリなどを除外
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+
+# Pythonのキャッシュを除外
+__pycache__/
+*.pyc
