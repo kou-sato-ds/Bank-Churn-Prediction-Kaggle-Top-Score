@@ -19,14 +19,14 @@ Kaggle Playground Series (Season 4, Episode 1) の銀行顧客離脱予測コン
 `infrastructure/terraform` にて、データレイクとなるAWS S3バケットの構成をコード化。環境の再現性（冪等性）を担保し、バージョニング設定によりデータの堅牢性を確保しています。
 
 #### **証跡：Terraformによるリソース作成成功**
-![Terraform Apply](docs\images\terraform_apply.png)
+![Terraform Apply](docs/images/terraform_apply.png)
 
 ### 2. クラウド・データパイプラインの実装
 Python (`boto3`) を用いて、ローカルの分析資産をクラウドへ自動搬送するパイプラインを実装。プロジェクトルートを起点としたモジュール実行により、保守性の高いコードを実現しました。
 
 #### **証跡：データアップロードの完遂とクラウド上での確認**
-![Upload Success](docs\images\upload_success.png)
-![S3 Console](docs\images\s3_console.png)
+![Upload Success](docs/images/upload_success.png)
+![S3 Console](docs/images/s3_console.png)
 
 ---
 
@@ -36,7 +36,7 @@ Python (`boto3`) を用いて、ローカルの分析資産をクラウドへ自
 ビジネスドメインの視点から、顧客のロイヤリティを可視化する **`Age_per_Product`** (Age / NumOfProducts) を考案。この変数が最も高い予測寄与度（Gain）を示し、精度の向上に大きく貢献しました。
 
 ### 2. 一般化性能の確保
-実務での運用を想定し、**5-fold Stratified K-Fold (OOF)** を採用。未知のデータに対する堅牢性を追求し、PublicよりもPrivateスコアが高い結果（堅牢なモデル）を得ました。
+実務での運用を想定し、**5-fold Stratified K-Fold (OOF)** を採用。未知のデータに対する堅牢性を追求した結果、Public (0.93278) よりも **Private (0.93420) のスコアが高い堅牢なモデル**を実現しました。
 
 ---
 
@@ -44,7 +44,7 @@ Python (`boto3`) を用いて、ローカルの分析資産をクラウドへ自
 実務のMLOps環境に準拠し、実験用ノートブック、学習ソースコード、インフラ定義を明確に分離しています。
 
 #### **証跡：整理されたディレクトリ構成**
-![Project Tree](docs\images\project_tree.png)
+![Project Tree](docs/images/project_tree.png)
 
 ```text
 .
@@ -55,29 +55,20 @@ Python (`boto3`) を用いて、ローカルの分析資産をクラウドへ自
 ├── src/            # 学習・推論・転送ロジック (Python modules)
 └── main.py         # 実行エントリーポイント
 
-##🛠️ 使い方 (How to use)
-1. セットアップ
+## 🛠️ 使い方 (How to use)
+
+### 1. セットアップ
 リポジトリをクローン後、必要なライブラリをインストールします。
-
-Bash
+```bash
 pip install -r requirements.txt
-2. インフラ構築 (AWS S3)
-Terraformを使用して、クラウド上にデータレイク（S3バケット）を作成します。
 
-Bash
 cd infrastructure/terraform
 terraform init
 terraform apply -auto-approve
-3. データアップロード
-Pythonスクリプトを実行し、ローカルデータをS3へ転送します。
 
-Bash
 # プロジェクトルートへ移動してから実行
 cd ../../
 python -m src.upload_data
-4. インフラの破棄
-使用後は、不要なコストを防ぐためにリソースを削除します。
 
-Bash
 cd infrastructure/terraform
 terraform destroy -auto-approve
