@@ -14,28 +14,38 @@ Kaggle Playground Series (Season 4, Episode 1) の銀行顧客離脱予測コン
 
 ```mermaid
 graph TD
+    %% 1. ノード定義（文字を太字に）
     subgraph "Local Environment"
-        NB[notebooks: EDA/Experimental] -->|Refactoring| SRC[src: Production Modules]
-        REQ[requirements.txt] -->|Dependency| SRC
+        NB[<b>notebooks: EDA/Experimental</b>] -->|Refactoring| SRC[<b>src: Production Modules</b>]
+        REQ[<b>requirements.txt</b>] -->|Dependency| SRC
     end
 
     subgraph "Infrastructure (IaC)"
-        TF[infrastructure/terraform] -->|Provisioning| S3[(AWS S3: Data Lake)]
+        TF[<b>infrastructure/terraform</b>] -->|Provisioning| S3[(<b>AWS S3: Data Lake</b>)]
     end
 
     subgraph "CI/CD & Pipeline"
-        GA[.github/workflows] -->|Lint/Test| SRC
+        GA[<b>.github/workflows</b>] -->|Lint/Test| SRC
         SRC -->|Boto3: Data Sync| S3
     end
 
     subgraph "Analysis Result"
-        S3 -->|Input| PRED[Churn Prediction]
-        PRED -->|0.93420| KS[Kaggle Private Score]
+        S3 -->|Input| PRED[<b>Churn Prediction</b>]
+        PRED -->|0.93420| KS[<b>Kaggle Private Score</b>]
     end
 
-    style TF fill:#f96,stroke:#333,stroke-width:2px
-    style GA fill:#42b883,stroke:#333,stroke-width:2px
-    style KS fill:#f1c40f,stroke:#333,stroke-width:2px
+    %% 2. スタイル定義（背景色、白文字、太枠）
+    style NB fill:#333,stroke:#fff,stroke-width:2px,color:#fff
+    style SRC fill:#333,stroke:#fff,stroke-width:2px,color:#fff
+    style REQ fill:#333,stroke:#fff,stroke-width:2px,color:#fff
+    
+    style TF fill:#f96,stroke:#333,stroke-width:2px,color:#fff
+    style S3 fill:#1f77b4,stroke:#fff,stroke-width:2px,color:#fff
+    
+    style GA fill:#42b883,stroke:#333,stroke-width:2px,color:#fff
+    
+    style PRED fill:#333,stroke:#fff,stroke-width:2px,color:#fff
+    style KS fill:#f1c40f,stroke:#333,stroke-width:2px,color:#000 %% 黄色は黒文字の方が見やすい
 ```
 
 -----
