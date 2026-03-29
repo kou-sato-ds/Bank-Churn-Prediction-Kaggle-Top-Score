@@ -1,7 +1,6 @@
 -----
-
-# 🚀 Bank Churn Prediction (Kaggle Private Score: 0.93420)
 ![Python CI](https://github.com/kou-sato-ds/Bank-Churn-Prediction-Kaggle-Top-Score/actions/workflows/ci.yml/badge.svg)
+# 🚀 Bank Churn Prediction (Kaggle Private Score: 0.93420)
 
 Kaggle Playground Series (Season 4, Episode 1) の銀行顧客離脱予測コンペティションにおいて、**Private Score 0.93420** を達成した解法リポジトリです。
 本プロジェクトでは、高精度な予測モデルの構築に加え、**TerraformによるIaC（Infrastructure as Code）を用いたAWSデータレイクの自動構築**を統合し、実務レベルのMLOpsパイプラインを実装しています。
@@ -14,7 +13,7 @@ Kaggle Playground Series (Season 4, Episode 1) の銀行顧客離脱予測コン
 
 ```mermaid
 graph TD
-    %% 1. ノード定義（文字を太字に）
+    %% ノードの定義（文字を太字に設定）
     subgraph "Local Environment"
         NB[<b>notebooks: EDA/Experimental</b>] -->|Refactoring| SRC[<b>src: Production Modules</b>]
         REQ[<b>requirements.txt</b>] -->|Dependency| SRC
@@ -34,18 +33,15 @@ graph TD
         PRED -->|0.93420| KS[<b>Kaggle Private Score</b>]
     end
 
-    %% 2. スタイル定義（背景色、白文字、太枠）
-    style NB fill:#333,stroke:#fff,stroke-width:2px,color:#fff
-    style SRC fill:#333,stroke:#fff,stroke-width:2px,color:#fff
-    style REQ fill:#333,stroke:#fff,stroke-width:2px,color:#fff
-    
-    style TF fill:#f96,stroke:#333,stroke-width:2px,color:#fff
-    style S3 fill:#1f77b4,stroke:#fff,stroke-width:2px,color:#fff
-    
-    style GA fill:#42b883,stroke:#333,stroke-width:2px,color:#fff
-    
-    style PRED fill:#333,stroke:#fff,stroke-width:2px,color:#fff
-    style KS fill:#f1c40f,stroke:#333,stroke-width:2px,color:#000 %% 黄色は黒文字の方が見やすい
+    %% スタイルの指定（背景色を濃く、文字色を白に変更）
+    style NB fill:#2d2d2d,stroke:#fff,stroke-width:2px,color:#fff
+    style SRC fill:#2d2d2d,stroke:#fff,stroke-width:2px,color:#fff
+    style REQ fill:#2d2d2d,stroke:#fff,stroke-width:2px,color:#fff
+    style TF fill:#e67e22,stroke:#fff,stroke-width:2px,color:#fff
+    style S3 fill:#2980b9,stroke:#fff,stroke-width:2px,color:#fff
+    style GA fill:#27ae60,stroke:#fff,stroke-width:2px,color:#fff
+    style PRED fill:#2d2d2d,stroke:#fff,stroke-width:2px,color:#fff
+    style KS fill:#f1c40f,stroke:#333,stroke-width:2px,color:#333 %% 黄色は濃い文字色で見やすく
 ```
 
 -----
