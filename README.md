@@ -12,36 +12,21 @@ Kaggle Playground Series (Season 4, Episode 1) の銀行顧客離脱予測コン
 本プロジェクトの全体像です。実験（Notebook）から運用（src）、インフラ（Terraform）までを一貫して管理しています。
 
 ```mermaid
+
 graph TD
-    %% ノードの定義（文字を太字に設定）
-    subgraph "Local Environment"
-        NB[<b>notebooks: EDA/Experimental</b>] -->|Refactoring| SRC[<b>src: Production Modules</b>]
-        REQ[<b>requirements.txt</b>] -->|Dependency| SRC
-    end
+    NB[notebooks] --> SRC[src]
+    REQ[requirements] --> SRC
+    TF[infrastructure/terraform] --> S3[(AWS S3)]
+    GA[.github/workflows] --> SRC
+    SRC --> S3
+    S3 --> PRED[Churn Prediction]
+    PRED --> KS[Kaggle Score]
 
-    subgraph "Infrastructure (IaC)"
-        TF[<b>infrastructure/terraform</b>] -->|Provisioning| S3[(<b>AWS S3: Data Lake</b>)]
-    end
-
-    subgraph "CI/CD & Pipeline"
-        GA[<b>.github/workflows</b>] -->|Lint/Test| SRC
-        SRC -->|Boto3: Data Sync| S3
-    end
-
-    subgraph "Analysis Result"
-        S3 -->|Input| PRED[<b>Churn Prediction</b>]
-        PRED -->|0.93420| KS[<b>Kaggle Private Score</b>]
-    end
-
-    %% スタイルの指定（背景色を濃く、文字色を白に変更）
-    style NB fill:#2d2d2d,stroke:#fff,stroke-width:2px,color:#fff
-    style SRC fill:#2d2d2d,stroke:#fff,stroke-width:2px,color:#fff
-    style REQ fill:#2d2d2d,stroke:#fff,stroke-width:2px,color:#fff
-    style TF fill:#e67e22,stroke:#fff,stroke-width:2px,color:#fff
-    style S3 fill:#2980b9,stroke:#fff,stroke-width:2px,color:#fff
-    style GA fill:#27ae60,stroke:#fff,stroke-width:2px,color:#fff
-    style PRED fill:#2d2d2d,stroke:#fff,stroke-width:2px,color:#fff
-    style KS fill:#f1c40f,stroke:#333,stroke-width:2px,color:#333 %% 黄色は濃い文字色で見やすく
+    style TF fill:#e67e22,color:#fff
+    style S3 fill:#2980b9,color:#fff
+    style GA fill:#27ae60,color:#fff
+    style KS fill:#f1c40f,color:#333
+    
 ```
 
 -----
