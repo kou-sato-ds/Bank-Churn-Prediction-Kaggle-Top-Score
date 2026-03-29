@@ -1,6 +1,7 @@
 -----
 
-## 🚀 Bank Churn Prediction (Kaggle Private Score: 0.93420)
+# 🚀 Bank Churn Prediction (Kaggle Private Score: 0.93420)
+![Python CI](https://github.com/kou-sato-ds/Bank-Churn-Prediction-Kaggle-Top-Score/actions/workflows/ci.yml/badge.svg)
 
 Kaggle Playground Series (Season 4, Episode 1) の銀行顧客離脱予測コンペティションにおいて、**Private Score 0.93420** を達成した解法リポジトリです。
 本プロジェクトでは、高精度な予測モデルの構築に加え、**TerraformによるIaC（Infrastructure as Code）を用いたAWSデータレイクの自動構築**を統合し、実務レベルのMLOpsパイプラインを実装しています。
